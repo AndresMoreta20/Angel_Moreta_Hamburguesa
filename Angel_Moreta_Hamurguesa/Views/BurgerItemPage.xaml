@@ -16,7 +16,7 @@
             <Label Text="¿Con queso extra?"/>
             <CheckBox x:Name="check"
                 CheckedChanged="OnCheckBoxCheckedChanged" 
-                IsChecked="{Binding WithExtraEcheese}"/>
+                IsChecked="{Binding WithExtraCheese}"/>
             <Button Text="Guardar"
                 Clicked="OnSaveClicked" />
             <Button Text="Cancelar"

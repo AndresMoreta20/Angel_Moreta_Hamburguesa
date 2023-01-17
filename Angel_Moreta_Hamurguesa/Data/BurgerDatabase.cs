@@ -29,6 +29,7 @@ namespace Angel_Moreta_Hamburguesa.Data
         public int AddNewBurger(Burger burger)
         {
             Init();
+            
             int result = conn.Insert(burger);
             return result;
         }

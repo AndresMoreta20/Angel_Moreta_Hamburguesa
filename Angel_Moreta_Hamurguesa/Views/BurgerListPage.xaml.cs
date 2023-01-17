@@ -9,13 +9,18 @@ public partial class BurgerListPage : ContentPage
 	{
         InitializeComponent();
         List<Burger> burger = App.BurgerRepo.GetAllBurgers();
-        burgerList.ItemsSource = burger;
-
+        burgerList.ItemsSource = burger;        
+        BindingContext = this;
     }
 
-    async void OnItemAdded(object sender, EventArgs e)
+    public void OnItemAdded(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(BurgerItemPage));
+        // await Shell.Current.GoToAsync(nameof(BurgerItemPage));
+        Shell.Current.GoToAsync(nameof(BurgerItemPage), true, new Dictionary<string, object>
+        {
+            ["Item"] = new Burger()
+        });
+
     }
 
     private void OnItemFocused(object sender, FocusEventArgs e)
@@ -26,6 +31,7 @@ public partial class BurgerListPage : ContentPage
     private async void OnItemSelected(object sender, SelectionChangedEventArgs e)
     {
         Burger selectedBurger = e.CurrentSelection as Burger;
+
         
         if (selectedBurger != null)
         {

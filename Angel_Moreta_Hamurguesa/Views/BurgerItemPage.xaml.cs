@@ -38,4 +38,9 @@ public partial class BurgerItemPage : ContentPage
     {
         Shell.Current.GoToAsync("..");
     }
+
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+
+    }
 }
