@@ -1,10 +1,10 @@
 using Angel_Moreta_Hamburguesa.Models;
 namespace Angel_Moreta_Hamburguesa.Views;
 
-public partial class BurgerListPage : ContentPage
+public partial class AM_BurgerListPage : ContentPage
 {
 
-    public BurgerListPage()
+    public AM_BurgerListPage()
     {
         InitializeComponent();
         List<Burger> burger = App.BurgerRepo.GetAllBurgers();
@@ -16,7 +16,7 @@ public partial class BurgerListPage : ContentPage
     public void OnItemAdded(object sender, EventArgs e)
     {
         // await Shell.Current.GoToAsync(nameof(BurgerItemPage));
-        Shell.Current.GoToAsync(nameof(BurgerItemPage), true, new Dictionary<string, object>
+        Shell.Current.GoToAsync(nameof(AM_BurgerItemPage), true, new Dictionary<string, object>
         {
             ["Item"] = new Burger()
         });
@@ -28,7 +28,7 @@ public partial class BurgerListPage : ContentPage
         Burger selectedBurger =  (Burger)AM_burgerList.SelectedItem;
         if (selectedBurger != null)
         {            
-            Shell.Current.GoToAsync(nameof(BurgerItemPage), true, new Dictionary<string, object>
+            Shell.Current.GoToAsync(nameof(AM_BurgerItemPage), true, new Dictionary<string, object>
             {
                 ["Item"] = selectedBurger
             });

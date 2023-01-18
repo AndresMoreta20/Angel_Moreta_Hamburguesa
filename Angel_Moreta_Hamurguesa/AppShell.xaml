@@ -9,7 +9,7 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate views:BurgerListPage}"
+        ContentTemplate="{DataTemplate views:AM_BurgerListPage}"
         Route="MainPage" />
 
 </Shell>

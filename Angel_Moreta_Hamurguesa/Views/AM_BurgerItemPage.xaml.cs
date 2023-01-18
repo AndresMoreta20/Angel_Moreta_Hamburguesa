@@ -3,7 +3,7 @@ using Angel_Moreta_Hamburguesa.Data;
 namespace Angel_Moreta_Hamburguesa.Views;
 
 [QueryProperty("Item", "Item")]
-public partial class BurgerItemPage : ContentPage
+public partial class AM_BurgerItemPage : ContentPage
 {
 
     public Burger Item
@@ -13,7 +13,7 @@ public partial class BurgerItemPage : ContentPage
     }
 
     bool _flag = false;
-	public BurgerItemPage()
+	public AM_BurgerItemPage()
 	{
 		InitializeComponent();
 	}
@@ -28,7 +28,7 @@ public partial class BurgerItemPage : ContentPage
     {
         
         App.BurgerRepo.AddNewBurger(Item);
-        await Shell.Current.GoToAsync(nameof(BurgerListPage));
+        await Shell.Current.GoToAsync(nameof(AM_BurgerListPage));
 
         /* Item.Name = nameB.Text;
          Item.Description = descB.Text;
@@ -46,6 +46,6 @@ public partial class BurgerItemPage : ContentPage
     private void OnDeleteClicked(object sender, EventArgs e)
     {
         App.BurgerRepo.DeleteBurger(Item);
-        Shell.Current.GoToAsync(nameof(BurgerListPage));
+        Shell.Current.GoToAsync(nameof(AM_BurgerListPage));
     }
 }
