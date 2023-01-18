@@ -29,9 +29,16 @@ namespace Angel_Moreta_Hamburguesa.Data
         public int AddNewBurger(Burger burger)
         {
             Init();
-            
-            int result = conn.Insert(burger);
-            return result;
+            if(burger.Id != 0)
+            {
+                return conn.Update(burger);
+            }
+            else
+            {
+                return conn.Insert(burger);
+            }
+            //int result = conn.Insert(burger);
+            //return result;
         }
         public List<Burger> GetAllBurgers()
         {
@@ -40,13 +47,19 @@ namespace Angel_Moreta_Hamburguesa.Data
             return burgers;
         }
 
-        public int EditBurger(Burger burger)
+        public int DeleteBurger(Burger item)
+        {
+            Init();
+            return conn.Delete(item);
+        }
+
+       /* public int EditBurger(Burger burger)
         {
             Init();
             int result = 0;
             conn.Update("Update Burger set Name="+burger.Name+" where Id="+burger.Id);
             return result;
 
-        }
+        }*/
     }
 }

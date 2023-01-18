@@ -45,4 +45,10 @@ public partial class BurgerItemPage : ContentPage
     {
 
     }
+
+    private void OnDeleteClicked(object sender, EventArgs e)
+    {
+        App.BurgerRepo.DeleteBurger(Item);
+        Shell.Current.GoToAsync(nameof(BurgerListPage));
+    }
 }
