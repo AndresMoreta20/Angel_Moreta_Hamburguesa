@@ -40,7 +40,8 @@ public partial class AM_BurgerItemPage : ContentPage
 
     private void OnCancelClicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("..");
+        //Shell.Current.GoToAsync("..");
+        Shell.Current.GoToAsync(nameof(AM_BurgerListPage));
     }
 
     private void OnDeleteClicked(object sender, EventArgs e)
