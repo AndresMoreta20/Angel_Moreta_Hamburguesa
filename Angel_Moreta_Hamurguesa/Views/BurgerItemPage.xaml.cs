@@ -5,17 +5,19 @@ namespace Angel_Moreta_Hamburguesa.Views;
 [QueryProperty("Item", "Item")]
 public partial class BurgerItemPage : ContentPage
 {
+
+    public Burger Item
+    {
+        get => BindingContext as Burger;
+        set => BindingContext = value;
+    }
     //Burger Item = new Burger();
     bool _flag = false;
 	public BurgerItemPage()
 	{
 		InitializeComponent();
 	}
-    public Burger Item
- {
-        get => BindingContext as Burger;
-        set => BindingContext = value;
-    }
+  
 
     private void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
     {

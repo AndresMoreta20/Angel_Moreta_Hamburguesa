@@ -5,13 +5,21 @@ namespace Angel_Moreta_Hamburguesa.Views;
 
 public partial class BurgerListPage : ContentPage
 {
-	public BurgerListPage()
-	{
+
+/*
+    public Burger selectedBurger
+    {
+        get => BindingContext as Burger;
+        set => BindingContext = value;
+    }*/
+    public BurgerListPage()
+    {
         InitializeComponent();
         List<Burger> burger = App.BurgerRepo.GetAllBurgers();
-        burgerList.ItemsSource = burger;        
+        burgerList.ItemsSource = burger;
         BindingContext = this;
     }
+ 
 
     public void OnItemAdded(object sender, EventArgs e)
     {
@@ -26,17 +34,33 @@ public partial class BurgerListPage : ContentPage
     private void OnItemFocused(object sender, FocusEventArgs e)
     {
 
+
     }
 
-    private async void OnItemSelected(object sender, SelectionChangedEventArgs e)
+    public void OnItemSelected(object sender, SelectionChangedEventArgs e)
     {
-        Burger selectedBurger = e.CurrentSelection as Burger;
-
-        
+        /*Burger selectedBurger = new Burger(); 
+        selectedBurger.Name = (e.CurrentSelection as Burger)?.Name;
+        selectedBurger.Id = (e.CurrentSelection as Burger).Id;
+        selectedBurger.Description = (e.CurrentSelection as Burger)?.Description;
+        selectedBurger.WithExtraCheese = (e.CurrentSelection as Burger).WithExtraCheese;
+        */
+        //Burger selectedBurger = e.CurrentSelection as Burger;
+        Burger selectedBurger =  (Burger)burgerList.SelectedItem;
         if (selectedBurger != null)
         {
-            await Shell.Current.GoToAsync(nameof(EditBurgerItem));
-           
+            // await Shell.Current.GoToAsync(nameof(EditBurgerItem));
+            
+            Shell.Current.GoToAsync(nameof(BurgerItemPage), true, new Dictionary<string, object>
+            {
+                ["Item"] = selectedBurger
+            });
+
+        } else
+        {
+            Console.WriteLine("error");
         }
     }
+
 }
+
