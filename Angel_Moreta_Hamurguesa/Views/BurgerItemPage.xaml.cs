@@ -11,7 +11,7 @@ public partial class BurgerItemPage : ContentPage
         get => BindingContext as Burger;
         set => BindingContext = value;
     }
-    //Burger Item = new Burger();
+
     bool _flag = false;
 	public BurgerItemPage()
 	{
@@ -26,24 +26,21 @@ public partial class BurgerItemPage : ContentPage
 
     private async void OnSaveClicked(object sender, EventArgs e)
     {
+        
+        App.BurgerRepo.AddNewBurger(Item);
+        await Shell.Current.GoToAsync(nameof(BurgerListPage));
+
         /* Item.Name = nameB.Text;
          Item.Description = descB.Text;
          Item.WithExtraCheese = _flag;
          App.BurgerRepo.AddNewBurger(Item);*/
         //Shell.Current.GoToAsync("..");
-        App.BurgerRepo.AddNewBurger(Item);
-        await Shell.Current.GoToAsync(nameof(BurgerListPage));
 
     }
 
     private void OnCancelClicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync("..");
-    }
-
-    protected override void OnNavigatedTo(NavigatedToEventArgs args)
-    {
-
     }
 
     private void OnDeleteClicked(object sender, EventArgs e)
